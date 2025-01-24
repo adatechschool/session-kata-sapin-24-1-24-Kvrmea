@@ -54,3 +54,21 @@ function showTopFirtree(top) {
 }
 
 showTopFirtree(5);
+
+function showFirtree(stage, height_stage) {
+    for (let i = 1; i <= stage; i++) {
+        console.log(' '.repeat(height_stage - 1) + '+');
+
+        for (let e = 1; e <= height_stage; e++) {
+            const spacesLeft = ' '.repeat(height_stage - e);
+            const starsLeft = '*'.repeat(e);
+            const starsRight = '*'.repeat(e);
+
+            console.log(spacesLeft + '/' + starsLeft + '|' + starsRight + '\\');
+        }
+    }
+
+    console.log(' '.repeat(height_stage - 1) + '|');
+}
+
+showFirtree(3, 3);
