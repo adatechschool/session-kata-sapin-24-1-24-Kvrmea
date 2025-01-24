@@ -18,16 +18,11 @@ function showRectangle(height, length) {
     }
 }
 
-// showRectangle(5, 5);
-
 function showRightTriangle(n) {
     for (let i = 1; i <= n; i++) {
         console.log('*'.repeat(i) + '\\');
     }
 }
-
-showRightTriangle(5);
-
 
 function showLeftTriangle(n) {
     for (let i = 1; i <= n; i++) {
@@ -36,8 +31,6 @@ function showLeftTriangle(n) {
       console.log(spaces + '/' + stars);
     }
 }
-  
-showLeftTriangle(5);
   
 function showTopFirtree(top) {
     console.log(' '.repeat(top + 1) + '+');
@@ -53,22 +46,36 @@ function showTopFirtree(top) {
     console.log(' '.repeat(top + 1) + '|');
 }
 
-showTopFirtree(5);
-
 function showFirtree(stage, height_stage) {
+    let top_offset = 0;
+    let espacement = stage - 1;
+
     for (let i = 1; i <= stage; i++) {
-        console.log(' '.repeat(height_stage - 1) + '+');
+        showStage(height_stage, top_offset, espacement);
 
-        for (let e = 1; e <= height_stage; e++) {
-            const spacesLeft = ' '.repeat(height_stage - e);
-            const starsLeft = '*'.repeat(e);
-            const starsRight = '*'.repeat(e);
-
-            console.log(spacesLeft + '/' + starsLeft + '|' + starsRight + '\\');
+        top_offset += 1;
+        espacement -= 1;
         }
-    }
-
-    console.log(' '.repeat(height_stage - 1) + '|');
 }
 
 showFirtree(3, 3);
+
+function showStage(height, top_offset, space) {
+    const alignSpace = ' '.repeat(space)
+    for (let i = top_offset + 1; i <= height; i++) {
+        const spacesLeft = ' '.repeat(height - i);
+        const starsLeft = '*'.repeat(i);
+        const starsRight = '*'.repeat(i);
+
+        console.log(alignSpace + spacesLeft + '/' + starsLeft + '|' + starsRight + '\\');
+    }
+}
+
+console.log("showStage(3, 0, 3):");
+showStage(3, 0, 3);
+
+console.log("\nshowStage(3, 1, 2):");
+showStage(3, 1, 2);
+
+console.log("\nshowStage(3, 2, 1):");
+showStage(3, 2, 1);
